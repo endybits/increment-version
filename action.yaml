@@ -1,0 +1,21 @@
+name: 'Increment Version'
+description: 'Applying semantic versioning to your repo project'
+inputs:
+  type-versioning: # id of input
+    description: 'Provide a version type: (major, minor, patch)'
+    required: true
+    default: 'patch'
+outputs:
+  new-version:
+    description: 'Incremented version'
+    value: ${{ steps.random-version-generator.outputs.random-version }}
+runs:
+  using: composite
+  steps:
+    - run: increment-version.sh
+      shell: bash
+    - id: random-version-generator
+      run: echo "random-version=$(echo "v$RANDOM.0")" >> $GITHUB_OUTPUT
+      shell: bash
+    - run: echo "Goodbye"
+      shell: bash
