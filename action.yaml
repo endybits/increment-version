@@ -15,7 +15,10 @@ runs:
     - id: random-version-generator
       run: echo "random-version=$(echo "v$RANDOM.0")" >> $GITHUB_OUTPUT
       shell: bash
-    - run: versioning.sh
+    - id: file-list
+      run: ls -al
       shell: bash
+    # - run: versioning.sh
+    #   shell: bash
     - run: echo "Goodbye"
       shell: bash
