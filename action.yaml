@@ -28,11 +28,8 @@ runs:
       run: echo "GITHUB_OUTPUT $GITHUB_OUTPUT"      
       shell: bash
     - id: versioning-sh
-      run: echo "default_version=$(echo '$DEFAULT_VERSION')" >> $GITHUB_OUTPUT
-      #run: echo "default_version=$(echo '${{ env.DEFAULT_VERSION }}')" >> $GITHUB_OUTPUT
-      shell: bash
-    - id: GITHUB_OUTPUT_after-SH
-      run: echo "GITHUB_OUTPUT $GITHUB_OUTPUT"      
+      #run: echo "default_version=$(echo '$DEFAULT_VERSION')" >> $GITHUB_OUTPUT
+      run: echo "default_version=$(echo '${{ env.DEFAULT_VERSION }}')" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "Goodbye"
       shell: bash
