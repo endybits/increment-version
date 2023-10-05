@@ -2,7 +2,7 @@
 
 echo "Hello increment Version.. v0.1.0 :)"
 echo "This is an initial test"
-default_version='v0.1.0'
+DEFAULT_VERSION='v0.1.0'
 
-# Save the default version as an environment variable
-echo "::set-env name=DEFAULT_VERSION::$default_version"
+echo "GITHUB_OUTPUT $GITHUB_OUTPUT"
+echo "default_version=$(echo '$DEFAULT_VERSION')" >> $GITHUB_OUTPUT
