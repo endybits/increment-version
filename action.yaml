@@ -9,6 +9,9 @@ outputs:
   new-version:
     description: 'Incremented version'
     value: ${{ steps.random-version-generator.outputs.random-version }}
+  default-version:
+    description: 'Default version'
+    value: ${{ steps.versioning-sh.outputs.default_version }}
 runs:
   using: 'composite'
   steps:
@@ -19,9 +22,10 @@ runs:
       run: ls -al ${{ github.action_path }}
       shell: bash
     - id: echo_action-path
-      run: echo ${{ github.action_path }}
+      run: ${{ github.action_path }}/versioning.sh
       shell: bash
-    # - run: versioning.sh
-    #   shell: bash
+    - id: versioning-sh
+      run: echo "default_version=$(echo $DEFAULT_VERSION)" >> $GITHUB_OUTPUT
+      shell: bash
     - run: echo "Goodbye"
       shell: bash
