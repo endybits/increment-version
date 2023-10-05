@@ -16,7 +16,7 @@ runs:
   using: 'composite'
   steps:
     - id: random-version-generator
-      run: echo "random-version=$(echo "v$RANDOM.0")" >> $GITHUB_OUTPUT
+      run: echo "random-version=$(echo 'v$RANDOM.0')" >> $GITHUB_OUTPUT
       shell: bash
     - id: action-path
       run: ls -al ${{ github.action_path }}
@@ -25,7 +25,7 @@ runs:
       run: ${{ github.action_path }}/versioning.sh
       shell: bash
     - id: versioning-sh
-      run: echo "default_version=$(echo $DEFAULT_VERSION)" >> $GITHUB_OUTPUT
+      run: echo "default_version=$(echo '$DEFAULT_VERSION')" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "Goodbye"
       shell: bash
