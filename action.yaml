@@ -12,12 +12,10 @@ outputs:
 runs:
   using: composite
   steps:
-    # - run: |
-    #     chmod +x increment-version.sh
-    #     ./increment-version.sh
-    #   shell: bash
     - id: random-version-generator
       run: echo "random-version=$(echo "v$RANDOM.0")" >> $GITHUB_OUTPUT
+      shell: bash
+    - run: versioning.sh
       shell: bash
     - run: echo "Goodbye"
       shell: bash
