@@ -10,13 +10,16 @@ outputs:
     description: 'Incremented version'
     value: ${{ steps.random-version-generator.outputs.random-version }}
 runs:
-  using: composite
+  using: 'composite'
   steps:
     - id: random-version-generator
       run: echo "random-version=$(echo "v$RANDOM.0")" >> $GITHUB_OUTPUT
       shell: bash
-    - id: file-list
-      run: ls -al
+    - id: action-path
+      run: ls -al ${{ github.action_path }}
+      shell: bash
+    - id: echo_action-path
+      run: echo ${{ github.action_path }}
       shell: bash
     # - run: versioning.sh
     #   shell: bash
